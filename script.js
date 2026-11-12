@@ -74,24 +74,98 @@
     }, { once: true });
   });
 
-  const stylesheet = document.createElement('link');
-  stylesheet.rel = 'stylesheet';
-  stylesheet.href = './site-features.css';
-  document.head.appendChild(stylesheet);
+  // Feature and responsive stylesheets are loaded in index.html in cascade order.
 
-  // Compact browser navigation controls: back, forward and return to page top.
+  // In-page browser navigation: keep back/forward inside this one-page site.
   const historyDock = document.createElement('nav');
   historyDock.className = 'shadi-history-dock';
   historyDock.setAttribute('aria-label', 'ناوبری صفحه');
-  historyDock.innerHTML = '<button type="button" id="shadiHistoryBack" aria-label="صفحه قبلی" title="بازگشت">↶</button><button type="button" id="shadiHistoryForward" aria-label="صفحه بعدی" title="جلو">↷</button><button type="button" id="shadiScrollTop" aria-label="بازگشت به بالای صفحه" title="رفتن به بالا">↑</button>';
+  historyDock.innerHTML =
+    '<button type="button" id="shadiHistoryBack" aria-label="رفتن به بخش قبلی" title="بخش قبلی"><b aria-hidden="true">↶</b><span>قبلی</span></button>' +
+    '<button type="button" id="shadiHistoryForward" aria-label="رفتن به بخش بعدی" title="بخش بعدی"><b aria-hidden="true">↷</b><span>بعدی</span></button>' +
+    '<button type="button" id="shadiScrollTop" aria-label="رفتن به ابتدای صفحه" title="رفتن به بالا"><b aria-hidden="true">↑</b><span>بالا</span></button>';
   document.body.appendChild(historyDock);
-  byId('shadiHistoryBack').addEventListener('click', () => window.history.back());
-  byId('shadiHistoryForward').addEventListener('click', () => window.history.forward());
+
+  const backButton = byId('shadiHistoryBack');
+  const forwardButton = byId('shadiHistoryForward');
   const scrollTopButton = byId('shadiScrollTop');
-  scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+  function decodeSectionHash(hash) {
+    try { return decodeURIComponent(String(hash || '').replace(/^#/, '')); }
+    catch (_) { return ''; }
+  }
+  const initialHash = location.hash && byId(decodeSectionHash(location.hash)) ? location.hash : '#home';
+  let sectionHistory = [initialHash];
+  let sectionHistoryIndex = 0;
+
+  function updateHistoryButtons() {
+    backButton.disabled = sectionHistoryIndex <= 0;
+    forwardButton.disabled = sectionHistoryIndex >= sectionHistory.length - 1;
+  }
+  function scrollToSection(hash, behavior) {
+    const target = byId(decodeSectionHash(hash));
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: behavior || (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'),
+      block: 'start'
+    });
+  }
+  function navigateToSection(hash) {
+    if (!hash || hash === '#') return;
+    if (!byId(decodeSectionHash(hash))) return;
+    if (sectionHistory[sectionHistoryIndex] !== hash) {
+      sectionHistory = sectionHistory.slice(0, sectionHistoryIndex + 1);
+      sectionHistory.push(hash);
+      sectionHistoryIndex = sectionHistory.length - 1;
+      window.history.pushState(
+        { ...(window.history.state && typeof window.history.state === 'object' ? window.history.state : {}), shadiSiteNavigation: true, shadiSectionIndex: sectionHistoryIndex },
+        '',
+        hash
+      );
+    }
+    updateHistoryButtons();
+    scrollToSection(hash);
+  }
+
+  window.history.replaceState(
+    { ...(window.history.state && typeof window.history.state === 'object' ? window.history.state : {}), shadiSiteNavigation: true, shadiSectionIndex: 0 },
+    '',
+    window.location.href
+  );
+
+  document.addEventListener('click', (event) => {
+    const anchor = event.target && event.target.closest ? event.target.closest('a[href^="#"]') : null;
+    if (!anchor || event.defaultPrevented || anchor.id === 'footerFeedback') return;
+    const hash = anchor.getAttribute('href');
+    if (!hash || hash === '#' || !byId(decodeSectionHash(hash))) return;
+    event.preventDefault();
+    navigateToSection(hash);
+    if (mainNav && mainNav.classList.contains('open')) {
+      mainNav.classList.remove('open');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  }, true);
+
+  backButton.addEventListener('click', () => {
+    if (sectionHistoryIndex > 0) window.history.back();
+  });
+  forwardButton.addEventListener('click', () => {
+    if (sectionHistoryIndex < sectionHistory.length - 1) window.history.forward();
+  });
+  window.addEventListener('popstate', (event) => {
+    const stateIndex = event.state && Number.isInteger(event.state.shadiSectionIndex) ? event.state.shadiSectionIndex : null;
+    if (stateIndex !== null && stateIndex >= 0 && stateIndex < sectionHistory.length) sectionHistoryIndex = stateIndex;
+    const hash = location.hash || '#home';
+    updateHistoryButtons();
+    scrollToSection(hash, 'smooth');
+  });
+
+  scrollTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
   const updateScrollTopButton = () => scrollTopButton.classList.toggle('is-visible', window.scrollY > 350);
   window.addEventListener('scroll', updateScrollTopButton, { passive: true });
   updateScrollTopButton();
+  updateHistoryButtons();
 
   const nav = mainNav;
   const header = document.querySelector('.header');
