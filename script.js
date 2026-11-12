@@ -79,6 +79,20 @@
   stylesheet.href = './site-features.css';
   document.head.appendChild(stylesheet);
 
+  // Compact browser navigation controls: back, forward and return to page top.
+  const historyDock = document.createElement('nav');
+  historyDock.className = 'shadi-history-dock';
+  historyDock.setAttribute('aria-label', 'ناوبری صفحه');
+  historyDock.innerHTML = '<button type="button" id="shadiHistoryBack" aria-label="صفحه قبلی" title="بازگشت">↶</button><button type="button" id="shadiHistoryForward" aria-label="صفحه بعدی" title="جلو">↷</button><button type="button" id="shadiScrollTop" aria-label="بازگشت به بالای صفحه" title="رفتن به بالا">↑</button>';
+  document.body.appendChild(historyDock);
+  byId('shadiHistoryBack').addEventListener('click', () => window.history.back());
+  byId('shadiHistoryForward').addEventListener('click', () => window.history.forward());
+  const scrollTopButton = byId('shadiScrollTop');
+  scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+  const updateScrollTopButton = () => scrollTopButton.classList.toggle('is-visible', window.scrollY > 350);
+  window.addEventListener('scroll', updateScrollTopButton, { passive: true });
+  updateScrollTopButton();
+
   const nav = mainNav;
   const header = document.querySelector('.header');
   function addNavLink(id, label, onClick) {
@@ -171,7 +185,6 @@
   addNavLink('accountNav', 'حساب کاربری', () => openModal('accountModal'));
   addNavLink('feedbackNav', 'Feedback', () => openModal('feedbackModal'));
   const adminNav = byId('adminNav');
-  if (adminNav) adminNav.addEventListener('click', () => openModal('adminModal'));
   const feedbackOpen = byId('feedbackOpen');
   if (feedbackOpen) feedbackOpen.addEventListener('click', () => openModal('feedbackModal'));
 
@@ -212,6 +225,15 @@
     currentUser = user || null;
     await checkAdmin();
     updateAccountLabel();
+    // Clear private admin data immediately after logout or an account switch.
+    if (!currentIsAdmin) {
+      const adminContent = byId('adminContent');
+      const feedbackList = byId('adminFeedbackList');
+      if (adminContent) adminContent.classList.add('shadi-hidden');
+      if (feedbackList) feedbackList.replaceChildren();
+      safeText(byId('adminUserCount'), '—');
+      safeText(byId('adminFeedbackCount'), '—');
+    }
   }
 
   async function loadPublicSettings() {
@@ -244,7 +266,6 @@
     if (!settings.error && Array.isArray(settings.data)) {
       const values = {};
       settings.data.forEach((item) => { values[item.key] = item.value; });
-      safeText(byId('adminServerAddress'), '');
       if (byId('adminServerAddress')) byId('adminServerAddress').value = typeof values['server.address'] === 'string' ? values['server.address'] : '';
       if (byId('adminServerVersion')) byId('adminServerVersion').value = typeof values['server.version'] === 'string' ? values['server.version'] : 'Paper 26.2';
       if (byId('adminAnnouncement')) byId('adminAnnouncement').value = typeof values['site.announcement'] === 'string' ? values['site.announcement'] : '';
@@ -285,6 +306,8 @@
 
   async function openAdminPanel() {
     openModal('adminModal');
+    const adminContent = byId('adminContent');
+    if (adminContent) adminContent.classList.add('shadi-hidden');
     if (!supabaseClient) {
       showStatus(adminStatus, 'پنل آماده است، اما هنوز سرویس احراز هویت و پایگاه‌داده به سایت وصل نشده است. راهنما را در SUPABASE_SETUP.md ببین.', 'error');
       return;
@@ -300,7 +323,7 @@
       return;
     }
     showStatus(adminStatus, 'دسترسی مدیر تأیید شد.', 'success');
-    byId('adminContent').classList.remove('shadi-hidden');
+    if (adminContent) adminContent.classList.remove('shadi-hidden');
     await loadAdminData();
   }
 
