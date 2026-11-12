@@ -1,5 +1,5 @@
--- SHADI SMP website backend schema: anonymous Feedback only.
--- Safe to re-run. Legacy account/profile tables, if any, are not used by the website.
+-- SHADI SMP website backend schema: public Feedback wall with private moderation.
+-- Safe to re-run on a fresh or existing project.
 
 create table if not exists public.site_settings (
   key text primary key,
@@ -10,20 +10,31 @@ create table if not exists public.site_settings (
 create table if not exists public.site_feedback (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete set null,
+  author_name text not null default 'بازیکن',
   category text not null check (char_length(category) <= 50),
-  message text not null check (char_length(message) between 8 and 1200),
+  message text not null check (char_length(message) between 2 and 1200),
+  admin_reply text,
   created_at timestamptz not null default now()
 );
 
--- Upgrade older installations where Feedback previously required a signed-in user.
+-- Upgrade previous Feedback-only installations.
 alter table public.site_feedback alter column user_id drop not null;
+alter table public.site_feedback add column if not exists author_name text not null default 'بازیکن';
+alter table public.site_feedback add column if not exists admin_reply text;
 
--- The website no longer creates accounts or exposes an admin panel.
-drop trigger if exists on_auth_user_created_shadi on auth.users;
-drop function if exists public.handle_new_shadi_user() cascade;
-drop policy if exists "Signed in users submit feedback" on public.site_feedback;
-drop policy if exists "Anyone can submit anonymous feedback" on public.site_feedback;
-drop policy if exists "Only admins read feedback" on public.site_feedback;
+do $$
+begin
+  if not exists (select 1 from pg_constraint where conname = 'site_feedback_author_name_length') then
+    alter table public.site_feedback
+      add constraint site_feedback_author_name_length
+      check (char_length(btrim(author_name)) between 1 and 24);
+  end if;
+  if not exists (select 1 from pg_constraint where conname = 'site_feedback_admin_reply_length') then
+    alter table public.site_feedback
+      add constraint site_feedback_admin_reply_length
+      check (admin_reply is null or char_length(admin_reply) <= 1200);
+  end if;
+end $$;
 
 alter table public.site_settings enable row level security;
 alter table public.site_feedback enable row level security;
@@ -32,14 +43,27 @@ drop policy if exists "Anyone can read public site settings" on public.site_sett
 create policy "Anyone can read public site settings" on public.site_settings
   for select to anon, authenticated using (true);
 
+drop policy if exists "Anyone can read public feedback" on public.site_feedback;
+create policy "Anyone can read public feedback" on public.site_feedback
+  for select to anon, authenticated using (true);
+
+drop policy if exists "Anyone can submit anonymous feedback" on public.site_feedback;
+drop policy if exists "Signed in users submit feedback" on public.site_feedback;
 create policy "Anyone can submit anonymous feedback" on public.site_feedback
   for insert to anon, authenticated
-  with check (user_id is null);
+  with check (
+    user_id is null
+    and char_length(btrim(author_name)) between 1 and 24
+    and char_length(message) between 2 and 1200
+  );
 
--- Feedback is insert-only from the public website. Read messages in Supabase Dashboard.
+-- Public users may read and submit only. They cannot edit replies or delete messages.
 revoke all on table public.site_feedback from anon, authenticated;
-grant insert on public.site_feedback to anon, authenticated;
-grant select on public.site_settings to anon, authenticated;
+grant select, insert on table public.site_feedback to anon, authenticated;
+grant select on table public.site_settings to anon, authenticated;
+
+create index if not exists site_feedback_created_at_idx
+  on public.site_feedback (created_at desc);
 
 insert into public.site_settings (key, value) values
   ('server.address', '""'::jsonb),

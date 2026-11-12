@@ -75,3 +75,35 @@
   .shadi-feedback-card p { font-size: 10px; }
 }
 @media (prefers-reduced-motion: reduce) { .shadi-modal, .shadi-submit, .shadi-close { transition: none !important; } }
+
+/* Public feedback wall: readable messages and owner replies. */
+.shadi-feedback-wall {
+  margin-top: 22px; padding: 25px; border: 1px solid #c4adff2b;
+  border-radius: 20px; background: linear-gradient(140deg,rgba(25,23,52,.78),rgba(12,16,36,.82));
+  box-shadow: 0 18px 55px #0003;
+}
+.shadi-feedback-wall-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.shadi-feedback-wall-head h3 { margin:3px 0 0; font-size:20px; }
+.shadi-feedback-count { flex:0 0 auto; color:#c7b6f1; font-size:10px; padding:6px 11px; border:1px solid #bda3f344; border-radius:99px; }
+.shadi-feedback-list { display:grid; gap:11px; }
+.shadi-feedback-item {
+  min-width:0; padding:16px 17px; border:1px solid #ffffff18; border-radius:14px;
+  background:linear-gradient(120deg,#ffffff08,#ffffff03);
+}
+.shadi-feedback-item-head { display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.shadi-feedback-author { color:#d2bcff; font-size:13px; overflow-wrap:anywhere; }
+.shadi-feedback-meta { color:#938ba9; font-size:9px; }
+.shadi-feedback-message { margin:8px 0 0; color:#eeeafa; font-size:12px; line-height:2.1; white-space:pre-wrap; overflow-wrap:anywhere; }
+.shadi-feedback-reply {
+  margin-top:13px; padding:12px 14px; border-right:3px solid #70b9f3;
+  border-radius:10px 0 0 10px; background:#3c75aa17;
+}
+.shadi-feedback-reply strong { color:#8ccaff; font-size:10px; }
+.shadi-feedback-reply p { margin:5px 0 0; color:#d9eaff; font-size:11px; line-height:2; white-space:pre-wrap; overflow-wrap:anywhere; }
+.shadi-feedback-empty { margin:0; padding:20px; text-align:center; color:#aaa3c0; font-size:11px; }
+@media (max-width:760px) {
+  .shadi-feedback-wall { padding:16px; margin-top:15px; }
+  .shadi-feedback-wall-head h3 { font-size:17px; }
+  .shadi-feedback-item { padding:13px; }
+  .shadi-feedback-message { font-size:11px; }
+}

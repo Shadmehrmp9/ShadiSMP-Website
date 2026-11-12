@@ -164,21 +164,26 @@
   updateScrollTopButton();
   updateHistoryButtons();
 
-  // Feedback is the only interactive feature and works without a user account.
+  // Feedback is public, persistent and account-free.
   const feedbackSection = '<section class="section container shadi-feedback-section" id="feedback">' +
     '<div class="glass-panel shadi-feedback-card">' +
       '<div><span class="section-label">WE VALUE YOUR FEEDBACK</span><h2>نظرت دربارهٔ SHADI SMP چیه؟</h2>' +
-      '<p>پیشنهادها، گزارش خطاها و ایده‌هایت را برای بهتر شدن سایت و سرور ارسال کن.</p></div>' +
-      '<button class="button button-primary shadi-feedback-action" type="button" id="feedbackOpen">ارسال Feedback <span>←</span></button>' +
-    '</div></section>';
+      '<p>پیشنهادها و گزارش خطاهایت را بنویس؛ پیام‌ها همین‌جا برای همه نمایش داده می‌شوند.</p></div>' +
+      '<button class="button button-primary shadi-feedback-action" type="button" id="feedbackOpen">ثبت Feedback <span>←</span></button>' +
+    '</div>' +
+    '<div class="shadi-feedback-wall"><div class="shadi-feedback-wall-head"><div><span class="section-label">PLAYER VOICES</span><h3>بازخورد بازیکنان</h3></div>' +
+    '<span class="shadi-feedback-count" id="feedbackCount">۰ پیام</span></div>' +
+    '<div class="shadi-feedback-list" id="feedbackList" aria-live="polite"><p class="shadi-feedback-empty">برای دریافت بازخوردها در حال اتصال هستیم…</p></div></div>' +
+    '</section>';
   const feedbackModal = '<div class="shadi-modal" id="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">' +
-    '<div class="shadi-modal-card"><div class="shadi-modal-head"><div><h2 id="feedbackTitle">ارسال بازخورد</h2>' +
-    '<p>بدون ساخت حساب کاربری، پیشنهاد یا گزارش خطایت را ارسال کن.</p></div>' +
+    '<div class="shadi-modal-card"><div class="shadi-modal-head"><div><h2 id="feedbackTitle">ثبت بازخورد</h2>' +
+    '<p>نامت را بنویس و نظرت را با بازیکنان SHADI SMP به اشتراک بگذار.</p></div>' +
     '<button class="shadi-close" type="button" data-close="feedbackModal" aria-label="بستن">×</button></div>' +
     '<form id="feedbackForm" class="shadi-feedback-form">' +
+    '<label>نام شما<input type="text" name="author_name" required minlength="1" maxlength="24" autocomplete="nickname" placeholder="مثلاً Shadmehr"></label>' +
     '<label>موضوع<select name="category" required><option value="پیشنهاد">پیشنهاد</option><option value="گزارش خطا">گزارش خطا</option><option value="نظر درباره سایت">نظر درباره سایت</option><option value="مشکل سرور">مشکل سرور</option></select></label>' +
-    '<label>پیام<textarea name="message" required minlength="8" maxlength="1200" placeholder="جزئیات را اینجا بنویس…"></textarea></label>' +
-    '<button class="shadi-submit" type="submit">ارسال Feedback</button></form>' +
+    '<label>پیام<textarea name="message" required minlength="2" maxlength="1200" placeholder="مثلاً: سلام، سایت خیلی خوبه!"></textarea></label>' +
+    '<button class="shadi-submit" type="submit">ثبت Feedback</button></form>' +
     '<p class="shadi-status" id="feedbackStatus" aria-live="polite">در حال بررسی اتصال Feedback…</p></div></div>';
 
   const main = document.querySelector('main');
@@ -238,6 +243,86 @@
   const feedbackOpen = byId('feedbackOpen');
   if (feedbackOpen) feedbackOpen.addEventListener('click', openFeedback);
 
+  function renderFeedback(items) {
+    const list = byId('feedbackList');
+    const count = byId('feedbackCount');
+    if (!list) return;
+    list.replaceChildren();
+    if (count) count.textContent = new Intl.NumberFormat('fa-IR').format(items.length) + ' پیام';
+    if (!items.length) {
+      const empty = document.createElement('p');
+      empty.className = 'shadi-feedback-empty';
+      empty.textContent = 'هنوز بازخوردی ثبت نشده؛ اولین نفر باش!';
+      list.appendChild(empty);
+      return;
+    }
+
+    items.forEach((item) => {
+      const card = document.createElement('article');
+      card.className = 'shadi-feedback-item';
+
+      const heading = document.createElement('div');
+      heading.className = 'shadi-feedback-item-head';
+      const author = document.createElement('strong');
+      author.className = 'shadi-feedback-author';
+      author.textContent = String(item.author_name || 'بازیکن');
+      const meta = document.createElement('span');
+      meta.className = 'shadi-feedback-meta';
+      const date = item.created_at ? new Date(item.created_at) : null;
+      const dateText = date && !Number.isNaN(date.getTime())
+        ? date.toLocaleDateString('fa-IR')
+        : '';
+      meta.textContent = [String(item.category || 'Feedback'), dateText].filter(Boolean).join(' · ');
+      heading.append(author, meta);
+
+      const message = document.createElement('p');
+      message.className = 'shadi-feedback-message';
+      message.textContent = String(item.message || '');
+
+      card.append(heading, message);
+
+      const replyText = typeof item.admin_reply === 'string' ? item.admin_reply.trim() : '';
+      if (replyText) {
+        const reply = document.createElement('div');
+        reply.className = 'shadi-feedback-reply';
+        const replyLabel = document.createElement('strong');
+        replyLabel.textContent = 'پاسخ SHADI SMP';
+        const replyBody = document.createElement('p');
+        replyBody.textContent = replyText;
+        reply.append(replyLabel, replyBody);
+        card.appendChild(reply);
+      }
+      list.appendChild(card);
+    });
+  }
+
+  async function loadFeedback() {
+    const list = byId('feedbackList');
+    if (!supabaseClient) return;
+    if (list) {
+      const loading = document.createElement('p');
+      loading.className = 'shadi-feedback-empty';
+      loading.textContent = 'در حال دریافت بازخوردها…';
+      list.replaceChildren(loading);
+    }
+    try {
+      const result = await supabaseClient
+        .from('site_feedback')
+        .select('id,author_name,category,message,admin_reply,created_at')
+        .order('created_at', { ascending: false })
+        .limit(100);
+      if (result.error) throw result.error;
+      renderFeedback(Array.isArray(result.data) ? result.data : []);
+    } catch (_) {
+      if (list) {
+        const error = document.createElement('p');
+        error.className = 'shadi-feedback-empty';
+        error.textContent = 'دریافت بازخوردها انجام نشد؛ تنظیمات جدول site_feedback را بررسی کن.';
+        list.replaceChildren(error);
+      }
+    }
+  }
+
   let supabaseClient = null;
   const feedbackStatus = byId('feedbackStatus');
   function showFeedbackStatus(message, kind) {
@@ -286,7 +371,8 @@
         auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
       });
       await loadPublicSettings();
-      showFeedbackStatus('فرم آماده است؛ برای ارسال پیام نیازی به حساب کاربری نیست.', 'success');
+      await loadFeedback();
+      showFeedbackStatus('فرم آماده است؛ نام و پیامت را ثبت کن.', 'success');
     } catch (_) {
       showFeedbackStatus('اتصال Feedback برقرار نشد؛ تنظیمات عمومی Supabase و دسترسی شبکه را بررسی کن.', 'error');
     }
@@ -303,13 +389,22 @@
     if (submit) submit.disabled = true;
     const form = new FormData(feedbackForm);
     try {
+      const authorName = String(form.get('author_name') || '').trim().slice(0, 24);
+      const messageText = String(form.get('message') || '').trim();
+      if (!authorName || messageText.length < 2) {
+        showFeedbackStatus('نام و پیام را کامل وارد کن.', 'error');
+        return;
+      }
       const result = await supabaseClient.from('site_feedback').insert({
+        author_name: authorName,
         category: String(form.get('category')),
-        message: String(form.get('message')).trim()
+        message: messageText
       });
       if (result.error) throw result.error;
       feedbackForm.reset();
-      showFeedbackStatus('Feedback با موفقیت ارسال شد. ممنون از کمکت!', 'success');
+      await loadFeedback();
+      closeFeedback();
+      showFeedbackStatus('Feedback با موفقیت ثبت شد. ممنون از کمکت!', 'success');
     } catch (_) {
       showFeedbackStatus('پیام ارسال نشد؛ تنظیمات جدول site_feedback و دسترسی ارسال ناشناس را بررسی کن.', 'error');
     } finally {
