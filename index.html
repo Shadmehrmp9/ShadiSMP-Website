@@ -3,272 +3,212 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090914">
-  <meta name="description" content="وب‌سایت رسمی SHADI SMP؛ دنیای بقا، رقابت، اقتصاد و چالش‌های اختصاصی.">
-  <meta property="og:title" content="SHADI SMP | دنیای تو، قوانین تو">
-  <meta property="og:description" content="به دنیای SHADI SMP بپیوند؛ بساز، رقابت کن و شارد جمع کن.">
+  <meta name="theme-color" content="#080914">
+  <meta name="description" content="وب‌سایت رسمی SHADI SMP؛ دنیای بقا، رقابت، اقتصاد و چالش‌های اختصاصی ماینکرفت.">
+  <meta property="og:title" content="SHADI SMP | دنیای تو، داستان تو">
+  <meta property="og:description" content="بساز، پیشرفت کن، شارد جمع کن و جایگاهت را در SHADI SMP پیدا کن.">
   <meta property="og:type" content="website">
-  <title>SHADI SMP — دنیای تو، ماجراجویی تو</title>
+  <title>SHADI SMP — دنیای تو، داستان تو</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="https://nexon-project.ru/public/assets/images/site-bg-anime-minecraft.jpg" fetchpriority="high">
+  <style>
+
+:root{color-scheme:dark;--bg:#080914;--panel:rgba(22,24,48,.56);--line:rgba(196,183,255,.18);--text:#f7f6ff;--muted:#b0adc6;--purple:#b79aff;--blue:#83caff;--gold:#f2cf85;--font:'Vazirmatn',Tahoma,sans-serif;--shadow:0 24px 80px rgba(0,0,0,.32)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;min-width:320px;overflow-x:hidden;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.9}a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}.container{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+.ambient{position:fixed;z-index:-3;pointer-events:none;border-radius:50%;filter:blur(120px);opacity:.28}.ambient-a{width:480px;height:480px;background:#663cd1;top:160px;right:-300px}.ambient-b{width:420px;height:420px;background:#1266ab;left:-270px;top:1000px;opacity:.16}
+.noise{position:fixed;inset:0;z-index:30;pointer-events:none;opacity:.018;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.glass-panel{background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.018) 55%),var(--panel);border:1px solid var(--line);backdrop-filter:blur(22px) saturate(135%);-webkit-backdrop-filter:blur(22px) saturate(135%);box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.1)}
+.header-wrap{position:absolute;z-index:50;top:18px;right:0;left:0}.header{height:76px;display:flex;align-items:center;justify-content:space-between;gap:26px;padding:0 22px;border-radius:19px;background:rgba(10,12,27,.6)}
+.brand{display:inline-flex;align-items:center;gap:12px;flex-shrink:0}.brand-mark{width:42px;height:42px;display:grid;place-items:center;position:relative;border:1px solid #d0bdff71;border-radius:13px;background:linear-gradient(145deg,#aa87ff,#4c79d2 72%);box-shadow:0 8px 28px #8159e655,inset 0 1px 7px #fff8;transform:rotate(-5deg)}.brand-mark:after{content:'';position:absolute;inset:4px;border:1px solid #ffffff70;border-radius:9px}.brand-mark span{position:relative;z-index:1;font-size:23px;font-weight:900;color:white;text-shadow:0 3px 10px #251346;transform:rotate(5deg)}.brand-word{font-size:16px;direction:ltr;letter-spacing:1.5px;font-weight:900}.brand-word span{color:var(--purple);margin-left:4px}
+.nav{display:flex;align-items:center;gap:28px;color:#c3c0d6;font-size:12px;font-weight:600}.nav a{position:relative;transition:color .2s}.nav a:after{content:'';position:absolute;right:0;left:100%;bottom:-7px;height:1px;background:linear-gradient(90deg,var(--blue),var(--purple));transition:left .25s}.nav a:hover{color:white}.nav a:hover:after{left:0}.header-button{display:flex;align-items:center;gap:15px;padding:10px 16px;border:1px solid #ac91ff4a;border-radius:11px;background:linear-gradient(120deg,#a080ed2c,#568fdc1b);font-size:11px;font-weight:800;white-space:nowrap}.header-button span{color:var(--blue);font-size:17px}.menu-toggle{display:none;background:none;border:0;padding:8px;cursor:pointer}.menu-toggle span{display:block;width:23px;height:2px;background:#f3efff;margin:5px;border-radius:2px}
+.hero{min-height:790px;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;padding:130px 0 90px}.hero-image,.hero-shade,.hero-grid{position:absolute;inset:0;z-index:-2}.hero-image img{width:100%;height:100%;object-fit:cover;object-position:center 52%;filter:saturate(.9) brightness(.78);transform:scale(1.015)}.hero-shade{z-index:-1;background:linear-gradient(90deg,rgba(6,8,20,.82) 0%,rgba(8,9,22,.58) 43%,rgba(8,9,22,.24) 76%,rgba(8,9,22,.34) 100%),linear-gradient(0deg,#080914 0%,transparent 37%,rgba(7,8,19,.26) 100%)}.hero-grid{z-index:-1;opacity:.2;background-image:linear-gradient(rgba(177,157,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(177,157,255,.08) 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(90deg,black,transparent 75%)}
+.hero-inner{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:28px;position:relative}.hero-copy{max-width:590px;padding-top:25px}.eyebrow,.section-label,.mini-label{font-size:10px;letter-spacing:1.6px;font-weight:800;color:#c4aaff}.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 13px;border:1px solid #c2aaff45;border-radius:40px;background:rgba(18,15,41,.54);backdrop-filter:blur(12px)}.status-pulse{width:7px;height:7px;border-radius:50%;background:#85d8ff;box-shadow:0 0 15px #85d8ff;animation:pulse 2.1s infinite}@keyframes pulse{50%{opacity:.45;box-shadow:0 0 4px #85d8ff}}
+.hero-kicker{font-size:10px;letter-spacing:4px;color:#d0c4f1;font-weight:700;margin:23px 0 7px;direction:ltr;text-align:right}.hero h1{font-size:clamp(47px,6.6vw,80px);font-weight:900;line-height:1.25;letter-spacing:-2.5px;margin:0;text-shadow:0 8px 34px #050611a8}.hero h1 span,.section-intro h2 span,.shard-copy h2 span,.final-cta h2 span{background:linear-gradient(100deg,#d3b6ff 4%,#8acaff 56%,#c4a5ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 4px 18px #9878ed3d)}.hero-lead{max-width:520px;color:#dbd8eb;font-size:13px;line-height:2.35;margin:20px 0 0;text-shadow:0 2px 14px #060613}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:29px}.button{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:49px;padding:10px 20px;border-radius:12px;font-size:12px;font-weight:800;transition:transform .25s,box-shadow .25s,border-color .25s}.button:hover{transform:translateY(-4px)}.button-primary{border:1px solid #d3c3ff74;background:linear-gradient(115deg,#a282f3,#4d85da);box-shadow:0 12px 35px #7958d35c,inset 0 1px 0 #ffffff80}.button-primary:hover{box-shadow:0 18px 42px #7958d388,inset 0 1px 0 #ffffff80}.button-primary span{font-size:18px}.button-glass{border:1px solid #ffffff44;background:rgba(255,255,255,.09);backdrop-filter:blur(15px);color:#f6f2ff}.hero-tags{display:flex;align-items:center;gap:15px;margin-top:37px;font-size:9px;letter-spacing:1.8px;font-weight:800;color:#dfd6f7;direction:ltr;justify-content:flex-end;width:max-content}.hero-tags i{width:3px;height:3px;border-radius:50%;background:#a994d8}
+.hero-side{height:420px;position:relative;display:grid;place-items:center;perspective:900px}.floating-cube{position:relative;width:218px;height:218px;display:grid;place-items:center;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);transform:rotate(-30deg) skew(5deg,5deg);background:linear-gradient(140deg,#c8b4ff 0%,#8669d8 32%,#416fba 70%,#1d3d7d 100%);box-shadow:0 0 90px #9972ff8c;filter:drop-shadow(0 35px 30px #02040f99);animation:cube-float 6s ease-in-out infinite}.floating-cube:before{content:'';position:absolute;inset:11px;clip-path:inherit;border:1px solid #fff8;background:linear-gradient(125deg,#ffffff36,transparent 53%)}.floating-cube:after{content:'';position:absolute;width:72%;height:72%;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);border:1px solid #ffffff61;box-shadow:inset 0 0 30px #fff3}.floating-cube span{position:relative;z-index:1;font-size:92px;font-weight:900;color:white;text-shadow:0 8px 27px #1b124a;transform:rotate(30deg) skew(-5deg,-5deg)}@keyframes cube-float{50%{transform:translateY(-15px) rotate(-25deg) skew(5deg,5deg)}}
+.glass-stat{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;min-width:194px;padding:13px 16px;border-radius:15px;background:rgba(17,19,43,.62);border:1px solid #c5b4ff4d;backdrop-filter:blur(19px);box-shadow:0 18px 50px #0005,inset 0 1px 0 #fff2}.stat-top{top:42px;right:2px;transform:rotate(2deg)}.stat-bottom{bottom:43px;left:0;transform:rotate(-2deg)}.stat-icon{width:34px;height:34px;display:grid;place-items:center;border:1px solid currentColor;border-radius:10px;font-size:19px;background:#ffffff08}.purple-icon{color:#c1a5ff}.blue-icon{color:#8bceff}.glass-stat small{display:block;color:#a8a1c0;font-size:8px;letter-spacing:1.5px;direction:ltr;text-align:right}.glass-stat strong{display:block;font-size:11px;letter-spacing:.3px;direction:ltr;text-align:right}.orbit{position:absolute;border:1px solid #c2aaff49;border-radius:50%;transform:rotate(-24deg);pointer-events:none}.orbit-one{width:370px;height:180px}.orbit-two{width:300px;height:380px;transform:rotate(45deg);border-color:#75caff30}.side-caption{position:absolute;bottom:1px;right:50%;transform:translateX(50%);font-size:8px;color:#c4b7e3;letter-spacing:3px;white-space:nowrap;direction:ltr}.scroll-cue{position:absolute;bottom:26px;right:50%;transform:translateX(50%);display:flex;align-items:center;gap:10px;font-size:9px;color:#dad4ea;opacity:.75}.scroll-cue span{width:1px;height:28px;background:linear-gradient(var(--purple),transparent)}
+.connection-section{position:relative;z-index:5;margin-top:-58px}.connection{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:25px 31px;border-radius:21px;background:linear-gradient(120deg,rgba(36,27,69,.78),rgba(15,22,47,.75));border-color:#c0a4ff55}.connection-copy{position:relative;z-index:1}.mini-label{font-size:9px;letter-spacing:2px;color:#b8a0ee}.connection h2{font-size:20px;margin:3px 0 2px}.connection p{font-size:11px;color:var(--muted);margin:0 0 10px}.address-line{display:flex;align-items:center;gap:10px;min-height:27px}.address-line strong{font-size:13px;letter-spacing:.3px;direction:ltr;text-align:right}.address-dot{width:7px;height:7px;border-radius:50%;background:#84caff;box-shadow:0 0 15px #84caff}.version-label{font-size:9px;color:#aaa4c0}.copy-button{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:10px;min-width:175px;padding:14px 17px;border:1px solid #d4c5ff7a;border-radius:12px;background:linear-gradient(120deg,#a181ef,#4e84d5);color:white;font-size:11px;font-weight:800;box-shadow:0 10px 28px #6f53cb4c,inset 0 1px 0 #fff7;cursor:pointer;white-space:nowrap}.copy-button:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}.copy-symbol{font-size:17px}.connection-glow{position:absolute;width:210px;height:130px;left:23%;top:-100px;background:#8e63f5;filter:blur(75px);opacity:.4}
+.section{padding-block:112px}.section-intro{display:flex;align-items:end;justify-content:space-between;gap:42px;margin-bottom:39px}.section-label{display:inline-block;color:#bca3f6;font-size:9px;letter-spacing:2.2px}.section-intro h2{font-size:clamp(30px,4vw,43px);line-height:1.55;font-weight:900;margin:8px 0 0}.section-intro>p{max-width:470px;color:var(--muted);font-size:12px;line-height:2.35;margin:0 0 7px}
+.world-showcase{height:420px;position:relative;display:flex;align-items:flex-end;margin-bottom:20px;padding:22px}.world-photo{position:absolute;inset:0;overflow:hidden;border-radius:26px;border:1px solid #d5c7ff52;box-shadow:0 25px 70px #0005}.world-photo img{width:100%;height:100%;object-fit:cover;object-position:center 56%;filter:brightness(.83) saturate(.9);transition:transform .8s}.world-showcase:hover .world-photo img{transform:scale(1.035)}.photo-vignette{position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,8,18,.88),transparent 52%),linear-gradient(90deg,rgba(7,8,18,.12),transparent)}.photo-label{position:absolute;bottom:25px;right:29px;display:flex;flex-direction:column;gap:4px;text-shadow:0 3px 14px #000}.photo-label span{font-size:8px;letter-spacing:2px;color:#c8b6ff;direction:ltr;text-align:right}.photo-label strong{font-size:19px}.world-glass-card{position:absolute;left:42px;bottom:34px;width:285px;padding:23px;border-radius:18px;background:rgba(12,15,36,.73);border-color:#c6b5ff5b}.glass-card-symbol{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:#a68bff20;color:#c3aaff;font-size:21px;border:1px solid #bda7ff47}.world-glass-card small{display:block;font-size:8px;letter-spacing:2px;color:#a99bd0;margin-top:13px;direction:ltr;text-align:right}.world-glass-card h3{font-size:16px;margin:2px 0}.world-glass-card p{color:var(--muted);font-size:10px;line-height:2.1;margin:0 0 11px}.world-glass-card a{font-size:10px;color:#c4aaff;font-weight:800}.world-glass-card a span{font-size:16px;margin-right:8px}.world-orbit{position:absolute;z-index:-1;width:360px;height:360px;border:1px solid #9d82ff2a;border-radius:50%;left:-100px;top:-90px;box-shadow:0 0 0 20px #9d82ff07,0 0 0 40px #9d82ff05}
+.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.intro-card{position:relative;min-height:205px;padding:23px;border-radius:18px;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s,background .3s}.intro-card:hover{border-color:rgba(192,173,255,.34);background-color:rgba(38,34,70,.7)}.card-id{display:block;font-size:8px;letter-spacing:1.7px;color:#9992b5;font-weight:800;direction:ltr;text-align:right}.card-icon{display:block;font-size:30px;margin-top:17px;line-height:1.2;text-shadow:0 0 19px currentColor}.icon-purple{color:#c0a4ff}.icon-blue{color:#8acbff}.icon-gold{color:#f0cc84}.intro-card h3{font-size:15px;margin:9px 0 1px}.intro-card p{font-size:10px;color:var(--muted);margin:0;line-height:2.1}
+.features-section,.rules-section{position:relative;isolation:isolate;background:linear-gradient(110deg,rgba(12,13,30,.95),rgba(17,20,42,.96),rgba(11,12,27,.96));border-block:1px solid #ffffff12}.features-section:before,.rules-section:before{content:'';position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 12% 45%,#6842bf1c,transparent 38%),radial-gradient(ellipse at 88% 70%,#247bb61b,transparent 34%)}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature-card{position:relative;min-height:215px;padding:23px;border-radius:18px;overflow:hidden;transform-style:preserve-3d;transition:border-color .3s}.feature-card:hover{border-color:#a78aff69}.feature-number{position:absolute;left:22px;top:19px;font-size:10px;color:#857ca4;letter-spacing:1.5px;direction:ltr}.feature-icon{display:grid;place-items:center;width:43px;height:43px;border:1px solid #b9a0ff48;border-radius:13px;background:linear-gradient(140deg,#ab8af32f,#5ba3e319);color:#c3aaff;font-size:22px;box-shadow:inset 0 1px 0 #fff2}.feature-card h3{font-size:15px;margin:19px 0 3px}.feature-card p{font-size:10px;color:var(--muted);line-height:2.2;margin:0;max-width:260px}.feature-line{position:absolute;right:23px;bottom:0;width:50px;height:2px;background:linear-gradient(90deg,var(--purple),var(--blue));box-shadow:0 0 17px #a78aff;transition:width .3s}.feature-card:hover .feature-line{width:calc(100% - 46px)}
+.ranks-section{padding-top:115px}.rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;perspective:1100px}.rank-card{--rank:#bca2ff;--rank-glow:#926de8;position:relative;overflow:hidden;min-height:350px;padding:25px;border-radius:20px;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s}.rank-card:before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 0,var(--rank-glow),transparent 43%);opacity:.18}.rank-card:after{content:'';position:absolute;width:180px;height:180px;left:-100px;bottom:-120px;border-radius:50%;background:var(--rank-glow);filter:blur(58px);opacity:.29}.rank-pro{--rank:#c2a5ff;--rank-glow:#895be4;border-color:#b69aff55;background:linear-gradient(145deg,#211b3b99,#17172d99)}.rank-admin{--rank:#89cbff;--rank-glow:#347fc7;border-color:#83caff46}.rank-owner{--rank:#f1d18c;--rank-glow:#c7963d;border-color:#e7c67b48}.rank-emblem{width:47px;height:47px;display:grid;place-items:center;border:1px solid var(--rank);border-radius:14px;color:var(--rank);font-size:25px;background:color-mix(in srgb,var(--rank) 12%,transparent);box-shadow:0 5px 26px color-mix(in srgb,var(--rank) 23%,transparent),inset 0 1px 0 #fff3}.rank-meta{position:absolute;top:41px;left:23px;font-size:8px;letter-spacing:1.5px;color:#9690ac;direction:ltr}.rank-card h3{position:relative;z-index:1;color:var(--rank);font-size:35px;line-height:1.3;letter-spacing:2.2px;margin:19px 0 0;direction:ltr;text-align:right}.rank-caption{font-size:10px;color:#d6d1e5}.rank-rule{height:1px;margin:18px 0;background:linear-gradient(90deg,transparent,var(--rank),transparent);opacity:.42}.rank-card>p{position:relative;z-index:1;min-height:91px;color:var(--muted);font-size:11px;line-height:2.25;margin:0}.rank-card strong{color:#fff}.rank-foot{position:relative;z-index:1;display:flex;align-items:center;gap:9px;margin-top:17px;font-size:10px;color:#e1dced;font-weight:700}.rank-foot span{width:6px;height:6px;border-radius:50%;background:var(--rank);box-shadow:0 0 10px var(--rank)}.rank-note{font-size:10px;color:#9993ae;margin:17px 2px 0}
+.rules-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:17px;align-items:stretch}.rules-side{position:sticky;top:115px;align-self:start;min-height:370px;padding:28px;border-radius:20px;overflow:hidden;background:linear-gradient(145deg,rgba(32,26,61,.76),rgba(13,17,36,.76))}.rules-mark{display:grid;place-items:center;width:48px;height:48px;border:1px solid #f2cc7b73;border-radius:14px;background:#d8ad5e20;color:var(--gold);font-size:27px;font-weight:900;box-shadow:0 0 30px #d7ad5b2b}.rules-side .mini-label{display:block;margin-top:26px;color:#c2a9fa;font-size:8px}.rules-side h3{font-size:27px;line-height:1.55;margin:5px 0}.rules-side p{position:relative;z-index:1;color:var(--muted);font-size:11px;line-height:2.3;max-width:280px}.rules-side-decoration{position:absolute;bottom:-36px;left:-6px;font-size:66px;font-weight:900;letter-spacing:4px;color:#ffffff07;direction:ltr}.rules-list{display:grid;grid-template-columns:1fr;gap:9px}.rule-item{display:flex;gap:15px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:linear-gradient(120deg,rgba(255,255,255,.055),rgba(255,255,255,.018)),rgba(17,19,40,.56);box-shadow:0 10px 35px #0002,inset 0 1px 0 #fff1;transition:transform .22s,border-color .22s}.rule-item:hover{transform:translateX(-4px);border-color:#b89fff52}.rule-item>span{flex-shrink:0;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#a68af026;border:1px solid #b498ff48;color:#c4a9ff;font-size:9px;font-weight:900;direction:ltr}.rule-item h3{font-size:12px;margin:0 0 3px}.rule-item p{font-size:10px;color:var(--muted);line-height:2.05;margin:0}.rules-footer{display:flex;align-items:center;gap:13px;margin-top:16px;padding:14px 17px;border-radius:14px;background:rgba(180,139,59,.08);border-color:#d3ae6842}.rules-footer>span{width:27px;height:27px;display:grid;place-items:center;flex-shrink:0;border-radius:8px;background:#d5aa5a25;color:var(--gold);font-weight:900}.rules-footer p{margin:0;color:#c8bea9;font-size:10px;line-height:2.1}
+.shard-section{padding-top:105px;padding-bottom:100px}.shard-banner{position:relative;overflow:hidden;min-height:340px;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:40px 52px;border-radius:25px;background:linear-gradient(110deg,rgba(30,23,58,.91),rgba(15,22,47,.82)),url('https://nexon-project.ru/public/assets/images/site-bg-anime-minecraft.jpg') center 55%/cover;border-color:#bca2ff59}.shard-banner:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,12,26,.12),rgba(10,12,26,.53)),radial-gradient(ellipse at 78% 55%,#986cff46,transparent 44%)}.shard-copy{position:relative;z-index:2;max-width:580px}.shard-copy h2{font-size:clamp(30px,4vw,42px);line-height:1.52;margin:9px 0 5px}.shard-copy p{max-width:510px;color:#c1bed2;font-size:11px;line-height:2.3;margin:0 0 18px}.shard-object{position:relative;z-index:2;width:260px;height:250px;display:flex;align-items:center;justify-content:center;flex-direction:column;flex-shrink:0;filter:drop-shadow(0 25px 28px #07061088)}.shard-rings{position:absolute;width:205px;height:205px;border:1px solid #c5a8ff77;border-radius:50%;box-shadow:0 0 0 15px #bda0ff0c,0 0 0 31px #bda0ff09,0 0 50px #9c6eff51,inset 0 0 40px #a985ff21;transform:rotateX(65deg) rotateZ(-15deg)}.crystal{position:relative;width:92px;height:125px;transform:rotate(-24deg) skewY(5deg);clip-path:polygon(50% 0,89% 28%,100% 70%,50% 100%,0 70%,12% 28%);background:linear-gradient(115deg,#f3e6ff 0%,#ba8dff 22%,#7945e6 47%,#55a8f1 77%,#d4c4ff 100%);box-shadow:0 0 45px #a77dff}.crystal:before{content:'';position:absolute;inset:0 50% 0 0;background:linear-gradient(120deg,#fff8,#fff0 90%);clip-path:polygon(100% 0,100% 100%,0 70%,12% 28%)}.crystal i,.crystal b,.crystal em{position:absolute;display:block;top:8%;bottom:12%;width:1px;background:#fff8;transform:rotate(20deg);left:45%}.crystal b{left:67%;opacity:.65;transform:rotate(-23deg)}.crystal em{left:27%;opacity:.5;transform:rotate(44deg)}.shard-object>span{margin-top:13px;font-size:11px;letter-spacing:4px;font-weight:900;direction:ltr;text-shadow:0 2px 12px #000}.shard-object>small{font-size:8px;color:#c9b8ed;letter-spacing:3px;direction:ltr}.shard-particles i{position:absolute;width:5px;height:5px;border-radius:50%;background:#e4d6ff;box-shadow:0 0 14px #bc9bff}.shard-particles i:nth-child(1){top:40px;right:53%}.shard-particles i:nth-child(2){top:90px;right:8%;width:3px;height:3px}.shard-particles i:nth-child(3){bottom:45px;right:42%}.shard-particles i:nth-child(4){top:30%;left:7%;width:3px;height:3px}.shard-particles i:nth-child(5){bottom:65px;left:27%;width:4px;height:4px}
+.steps-section{padding-top:65px}.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{position:relative;overflow:hidden;min-height:210px;padding:24px;border-radius:18px}.step-count{position:absolute;left:22px;top:19px;font-size:9px;letter-spacing:1.5px;color:#9388b7;direction:ltr}.step-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;border:1px solid #b59bff4b;background:#a38aff20;color:#c6adff;font-size:19px}.step h3{font-size:14px;margin:17px 0 3px}.step p{font-size:10px;color:var(--muted);margin:0;line-height:2.1}.final-cta{position:relative;isolation:isolate;overflow:hidden;text-align:center;margin-bottom:95px;padding:60px 20px;border:1px solid #b9a0ff43;border-radius:23px;background:linear-gradient(135deg,rgba(27,23,53,.88),rgba(13,19,39,.88));box-shadow:var(--shadow),inset 0 1px 0 #fff1}.cta-light{position:absolute;z-index:-1;left:50%;top:-125px;transform:translateX(-50%);width:360px;height:160px;background:#825de2;filter:blur(85px);opacity:.32}.final-cta h2{font-size:clamp(27px,4vw,41px);margin:8px 0 4px}.final-cta p{font-size:11px;color:var(--muted);margin:0 0 19px}
+.footer{border-top:1px solid #ffffff13;background:#090a16}.footer-inner{min-height:100px;display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-inner p,.footer-inner>a:last-child{font-size:10px;color:#9691a9;margin:0}.footer-inner>a:last-child:hover{color:white}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.65,.2,1)}.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(max-width:950px){.nav{gap:16px;font-size:10px}.header{gap:18px}.hero{min-height:730px}.hero-inner{gap:0}.hero-side{transform:scale(.88)}.rules-layout{grid-template-columns:.65fr 1.35fr}.rules-side{padding:22px}.rank-card{padding:21px}.rank-meta{font-size:7px}}
+@media(max-width:720px){.container{width:min(100% - 32px,590px)}.header-wrap{top:10px}.header{height:66px;padding:0 14px;border-radius:15px}.brand-mark{width:37px;height:37px}.brand-word{font-size:14px}.menu-toggle{display:block;order:3}.header-button{display:none}.nav{display:none;position:absolute;top:72px;right:0;left:0;flex-direction:column;align-items:stretch;gap:0;padding:9px;border:1px solid var(--line);border-radius:15px;background:rgba(11,13,30,.94);backdrop-filter:blur(22px);box-shadow:0 20px 45px #0009}.nav.open{display:flex}.nav a{padding:10px 12px;border-radius:9px}.nav a:hover{background:#ffffff0c}
+.hero{min-height:860px;align-items:flex-start;padding:135px 0 70px}.hero-image img{object-position:58% center}.hero-shade{background:linear-gradient(0deg,#080914 1%,rgba(7,8,20,.78) 29%,rgba(7,8,20,.3) 70%),linear-gradient(90deg,rgba(7,8,20,.5),rgba(7,8,20,.25))}.hero-inner{grid-template-columns:1fr;gap:3px}.hero-copy{padding-top:5px}.hero-kicker{font-size:8px;margin-top:18px}.hero h1{font-size:clamp(44px,11vw,65px);line-height:1.3;letter-spacing:-1.7px}.hero-lead{font-size:11px;max-width:450px}.hero-actions{margin-top:21px}.button{min-height:46px;padding:9px 16px;font-size:11px}.hero-tags{margin-top:25px;font-size:8px}.hero-side{height:280px;width:100%;transform:scale(.8);margin-top:4px}.floating-cube{width:170px;height:170px}.floating-cube span{font-size:73px}.orbit-one{width:300px;height:145px}.orbit-two{width:245px;height:300px}.stat-top{top:18px;right:4%}.stat-bottom{bottom:18px;left:1%}.glass-stat{min-width:167px;padding:10px 12px}.side-caption{bottom:-4px}.scroll-cue{display:none}
+.connection-section{margin-top:-34px}.connection{align-items:stretch;flex-direction:column;padding:21px}.connection h2{font-size:17px}.connection p{font-size:10px}.address-line strong{font-size:11px}.copy-button{width:100%}.section{padding-block:78px}.section-intro{display:block;margin-bottom:25px}.section-intro>p{margin-top:10px;font-size:11px}.section-intro h2{font-size:31px}
+.world-showcase{height:440px;padding:13px;margin-bottom:14px}.world-photo{border-radius:19px}.world-photo img{object-position:58% center}.photo-label{right:17px;bottom:18px}.photo-label strong{font-size:14px}.world-glass-card{left:13px;bottom:13px;width:230px;padding:16px;border-radius:14px}.world-glass-card h3{font-size:13px}.world-glass-card p{font-size:9px}.world-glass-card small{margin-top:8px}.intro-cards,.feature-grid,.rank-grid,.steps-grid{grid-template-columns:1fr}.intro-card{min-height:180px}.feature-card{min-height:175px}.rank-card{min-height:0}.rank-card>p{min-height:0}.rank-meta{font-size:8px}.rank-card h3{font-size:30px}
+.rules-layout{grid-template-columns:1fr}.rules-side{position:relative;top:auto;min-height:235px;padding:21px}.rules-side h3{font-size:23px}.rules-side p{max-width:460px}.rules-list{gap:8px}.rule-item{padding:14px}.rule-item p{font-size:9px}.shard-section{padding-block:78px}.shard-banner{display:block;padding:26px 22px;min-height:0;border-radius:20px}.shard-copy h2{font-size:30px}.shard-copy p{font-size:10px}.shard-object{height:220px;margin:5px auto -3px;transform:scale(.88)}.steps-section{padding-top:20px}.step{min-height:175px}.final-cta{margin-bottom:65px;padding:45px 15px}.final-cta p{font-size:10px}.footer-inner{padding-block:18px;flex-wrap:wrap}.footer-inner p{order:3;width:100%}}
+@media(max-width:390px){.hero h1{font-size:42px}.hero-side{transform:scale(.72);margin-inline:-30px;width:calc(100% + 60px)}.world-glass-card{width:210px}.hero-tags{gap:9px;letter-spacing:1px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+  </style>
 </head>
 <body>
-  <div class="background-glow glow-purple" aria-hidden="true"></div>
-  <div class="background-glow glow-blue" aria-hidden="true"></div>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="SHADI SMP خانه">
-        <span class="brand-icon">S</span>
-        <span class="brand-name">SHADI<span>SMP</span></span>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="header-wrap">
+    <div class="container header glass-panel">
+      <a class="brand" href="#home" aria-label="SHADI SMP، صفحه اصلی">
+        <span class="brand-mark"><span>S</span></span>
+        <span class="brand-word">SHADI<span>SMP</span></span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mainNav">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mainNav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="main-nav" id="mainNav" aria-label="ناوبری اصلی">
-        <a href="#about">درباره ما</a>
+      <nav class="nav" id="mainNav" aria-label="ناوبری اصلی">
+        <a href="#world">دنیای ما</a>
         <a href="#features">امکانات</a>
-        <a href="#rules">قوانین</a>
         <a href="#ranks">رنک‌ها</a>
+        <a href="#rules">قوانین</a>
         <a href="#shards">شاردها</a>
-        <a href="#how-to-join">راهنمای ورود</a>
       </nav>
-      <a class="header-cta" href="#join">ورود به سرور <span>↗</span></a>
+      <a class="header-button" href="#join">ورود به سرور <span>↗</span></a>
     </div>
   </header>
 
   <main>
-    <section class="hero container" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-dot"></span> دنیای اختصاصی SHADI SMP</div>
-        <h1>اینجا فقط<br>بازی نمی‌کنی؛<br><span>داستان می‌سازی.</span></h1>
-        <p class="hero-description">یک دنیای بقا برای ساختن قلمرو، رقابت در لیدربورد، تجارت و شرکت در چالش‌های اختصاصی. جای خودت را در SHADI SMP پیدا کن.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#join">شروع ماجراجویی <span>←</span></a>
-          <a class="button button-secondary" href="#features">کشف امکانات</a>
+    <section class="hero" id="home">
+      <div class="hero-image" aria-hidden="true"><img src="https://nexon-project.ru/public/assets/images/site-bg-anime-minecraft.jpg" alt="" fetchpriority="high"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="status-pulse"></span> دنیای اختصاصی ماینکرفت</div>
+          <p class="hero-kicker">YOUR WORLD. YOUR STORY.</p>
+          <h1>به دنیای<br><span>SHADI SMP</span><br>خوش اومدی.</h1>
+          <p class="hero-lead">از اولین قدم تا ساختن قلمرو خودت؛ بقا کن، تجارت کن، در چالش‌ها شرکت کن و اسمت را در لیدربورد ماندگار کن.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#join">شروع ماجراجویی <span>←</span></a>
+            <a class="button button-glass" href="#world">کشف دنیای ما</a>
+          </div>
+          <div class="hero-tags"><span>✦ SURVIVAL</span><i></i><span>✧ ECONOMY</span><i></i><span>◇ SHARDS</span></div>
         </div>
-        <div class="hero-tags">
-          <span><i class="tag-dot purple-dot"></i> SURVIVAL</span>
-          <span><i class="tag-dot blue-dot"></i> ECONOMY</span>
-          <span><i class="tag-dot gold-dot"></i> SHARDS</span>
+
+        <div class="hero-side reveal" aria-label="اطلاعات سرور">
+          <div class="floating-cube" aria-hidden="true"><span>S</span></div>
+          <div class="glass-stat stat-top"><span class="stat-icon purple-icon">◈</span><div><small>GAME MODE</small><strong>SURVIVAL SMP</strong></div></div>
+          <div class="glass-stat stat-bottom"><span class="stat-icon blue-icon">⬡</span><div><small>SERVER SOFTWARE</small><strong>Paper 26.2</strong></div></div>
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <span class="side-caption">BUILD · TRADE · COMPETE</span>
         </div>
       </div>
-      <div class="hero-visual" aria-label="نشان گرافیکی SHADI SMP">
-        <div class="visual-grid"></div>
-        <div class="visual-ring ring-one"></div>
-        <div class="visual-ring ring-two"></div>
-        <div class="floating-cube cube-back"></div>
-        <div class="floating-cube cube-main"><span>S</span><small>SHADI SMP</small></div>
-        <div class="visual-star star-one">✦</div>
-        <div class="visual-star star-two">✧</div>
-        <div class="visual-caption">BUILD YOUR LEGACY</div>
-        <div class="visual-chip">YOUR WORLD. YOUR STORY.</div>
+      <a class="scroll-cue" href="#join"><span></span> اسکرول کن</a>
+    </section>
+
+    <section class="container connection-section" id="join">
+      <div class="connection glass-panel reveal">
+        <div class="connection-copy">
+          <span class="mini-label">READY TO JOIN?</span>
+          <h2>ماجراجویی از اینجا شروع می‌شه.</h2>
+          <p>آدرس سرور را کپی کن و در بخش Multiplayer ماینکرفت وارد کن.</p>
+          <div class="address-line"><span class="address-dot"></span><strong id="serverAddress" dir="ltr">آدرس سرور به‌زودی اعلام می‌شود</strong></div>
+          <span class="version-label" id="serverVersion">نسخه: Paper 26.2</span>
+        </div>
+        <button class="copy-button" id="copyIp" type="button" disabled><span class="copy-icon copy-symbol">▣</span><span id="copyLabel">کپی آدرس سرور</span></button>
+        <div class="connection-glow" aria-hidden="true"></div>
       </div>
     </section>
 
-    <section class="join-panel container" id="join">
-      <div class="join-panel-copy">
-        <span class="micro-label">SERVER CONNECTION</span>
-        <h2>آماده‌ی ورود هستی؟</h2>
-        <p>آدرس سرور را کپی کن و در بخش Multiplayer ماینکرفت وارد شو.</p>
-        <div class="server-address-row">
-          <span class="address-indicator"></span>
-          <strong id="serverAddress" dir="ltr">آدرس سرور به‌زودی اعلام می‌شود</strong>
-        </div>
-        <span class="server-version" id="serverVersion">نسخه: Paper 26.2</span>
+    <section class="section container" id="world">
+      <div class="section-intro reveal">
+        <div><span class="section-label">WELCOME TO SHADI SMP</span><h2>فقط زنده نمون؛<br><span>داستان بساز.</span></h2></div>
+        <p>SHADI SMP برای بازیکن‌هایی ساخته شده که دنبال یک دنیای ساده و تکراری نیستند. پیشرفت، رقابت، تجارت و ساختن چیزی که امضای خودت را داشته باشد.</p>
       </div>
-      <button class="copy-button" id="copyIp" type="button" disabled>
-        <span class="copy-icon">▣</span>
-        <span id="copyLabel">کپی آدرس سرور</span>
-      </button>
-      <div class="join-decoration" aria-hidden="true"></div>
-    </section>
-
-    <section class="section container" id="about">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">WELCOME TO THE WORLD</span>
-          <h2>به دنیای <span>SHADI</span> خوش اومدی</h2>
-        </div>
-        <p>SHADI SMP برای بازیکن‌هایی ساخته شده که فقط دنبال زنده ماندن نیستند؛ می‌خواهند پیشرفت کنند، رقابت کنند و اسمشان را در سرور ماندگار کنند.</p>
+      <div class="world-showcase reveal">
+        <div class="world-photo"><img src="https://nexon-project.ru/public/assets/images/site-bg-anime-minecraft.jpg" alt="نمای سینمایی از یک دنیای فانتزی بلوکی با قلعه و آبشار" loading="lazy"><div class="photo-vignette"></div><div class="photo-label"><span>01 / THE WORLD</span><strong>یک دنیای تازه، هزار راه برای پیشرفت</strong></div></div>
+        <div class="world-glass-card glass-panel"><span class="glass-card-symbol">✧</span><small>MAKE IT YOURS</small><h3>قلمرو خودت رو بساز.</h3><p>منابع جمع کن، خانه بساز، با بقیه بازیکن‌ها تعامل داشته باش و دنیای خودت را گسترش بده.</p><a href="#features">دیدن امکانات <span>←</span></a></div>
+        <div class="world-orbit" aria-hidden="true"></div>
       </div>
-      <div class="about-grid">
-        <article class="info-card info-card-featured">
-          <span class="card-index">01 / SURVIVE</span>
-          <div class="card-symbol">◇</div>
-          <h3>از صفر شروع کن</h3>
-          <p>منابع جمع کن، خانه بساز و قدم‌به‌قدم قلمرو خودت را گسترش بده.</p>
-          <span class="card-orb"></span>
-        </article>
-        <article class="info-card">
-          <span class="card-index">02 / COMPETE</span>
-          <div class="card-symbol symbol-blue">⌁</div>
-          <h3>در لیدربورد بدرخش</h3>
-          <p>برای رسیدن به جمع سه نفر برتر تلاش کن و رنک PRO بگیر.</p>
-          <span class="card-orb"></span>
-        </article>
-        <article class="info-card">
-          <span class="card-index">03 / TRADE</span>
-          <div class="card-symbol symbol-gold">✧</div>
-          <h3>تجارت و پیشرفت</h3>
-          <p>از سیستم اقتصادی استفاده کن، معامله کن و امکانات بیشتری به دست بیار.</p>
-          <span class="card-orb"></span>
-        </article>
+      <div class="intro-cards">
+        <article class="intro-card glass-panel tilt-card reveal"><span class="card-id">01 / SURVIVE</span><span class="card-icon icon-purple">◈</span><h3>از صفر شروع کن</h3><p>منابع جمع کن و قدم‌به‌قدم قلمرو خودت را گسترش بده.</p></article>
+        <article class="intro-card glass-panel tilt-card reveal"><span class="card-id">02 / COMPETE</span><span class="card-icon icon-blue">⌁</span><h3>در لیدربورد بدرخش</h3><p>برای رسیدن به رتبه‌های اول تا سوم رقابت کن.</p></article>
+        <article class="intro-card glass-panel tilt-card reveal"><span class="card-id">03 / TRADE</span><span class="card-icon icon-gold">✦</span><h3>تجارت و پیشرفت</h3><p>از سیستم اقتصادی استفاده کن و معامله‌های منصفانه انجام بده.</p></article>
       </div>
     </section>
 
     <section class="section features-section" id="features">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">MADE FOR YOUR ADVENTURE</span>
-            <h2>امکاناتی برای یک <span>تجربه متفاوت</span></h2>
-          </div>
-          <p>هر بخش برای این طراحی شده که بازی فقط به جمع‌آوری منابع محدود نشود.</p>
-        </div>
+        <div class="section-intro reveal"><div><span class="section-label">MORE THAN SURVIVAL</span><h2>امکانات برای یک<br><span>تجربه متفاوت.</span></h2></div><p>هر بخش برای این طراحی شده که بازی فقط به جمع‌آوری منابع محدود نشود؛ همیشه هدف تازه‌ای برای دنبال کردن داری.</p></div>
         <div class="feature-grid">
-          <article class="feature-item">
-            <span class="feature-number">01</span>
-            <div><h3>اقتصاد و فروشگاه</h3><p>موجودی خودت را مدیریت کن و از فروشگاه سرور خرید کن.</p></div>
-            <span class="feature-mark">↙</span>
-          </article>
-          <article class="feature-item">
-            <span class="feature-number">02</span>
-            <div><h3>چالش‌های اختصاصی</h3><p>چالش‌ها را کامل کن و برای دریافت شارد پیشرفت کن.</p></div>
-            <span class="feature-mark">↙</span>
-          </article>
-          <article class="feature-item">
-            <span class="feature-number">03</span>
-            <div><h3>فروشگاه شارد</h3><p>شاردهایت را برای دریافت آیتم‌های فروشگاه شارد استفاده کن.</p></div>
-            <span class="feature-mark">↙</span>
-          </article>
-          <article class="feature-item">
-            <span class="feature-number">04</span>
-            <div><h3>لیدربورد و رنک PRO</h3><p>برای قرار گرفتن در رتبه‌های اول تا سوم رقابت کن.</p></div>
-            <span class="feature-mark">↙</span>
-          </article>
-          <article class="feature-item">
-            <span class="feature-number">05</span>
-            <div><h3>اسپاون امن</h3><p>محدوده‌ی اسپاون برای شروع و تعامل بازیکنان در نظر گرفته شده است.</p></div>
-            <span class="feature-mark">↙</span>
-          </article>
-          <article class="feature-item">
-            <span class="feature-number">06</span>
-            <div><h3>مدیریت و رسیدگی</h3><p>تیم مدیریت مسئول بررسی گزارش‌ها و حفظ نظم سرور است.</p></div>
-            <span class="feature-mark">↙</span>
-          </article>
+          <article class="feature-card glass-panel tilt-card reveal"><span class="feature-number">01</span><span class="feature-icon">▧</span><h3>اقتصاد و فروشگاه</h3><p>موجودی خودت را مدیریت کن و از فروشگاه سرور خرید کن.</p><span class="feature-line"></span></article>
+          <article class="feature-card glass-panel tilt-card reveal"><span class="feature-number">02</span><span class="feature-icon">✧</span><h3>چالش‌های اختصاصی</h3><p>چالش‌ها را کامل کن و برای دریافت شارد پیشرفت کن.</p><span class="feature-line"></span></article>
+          <article class="feature-card glass-panel tilt-card reveal"><span class="feature-number">03</span><span class="feature-icon">◇</span><h3>فروشگاه شارد</h3><p>شاردهایت را برای دریافت آیتم‌های فروشگاه شارد استفاده کن.</p><span class="feature-line"></span></article>
+          <article class="feature-card glass-panel tilt-card reveal"><span class="feature-number">04</span><span class="feature-icon">♛</span><h3>لیدربورد و رنک PRO</h3><p>برای قرار گرفتن در رتبه‌های اول تا سوم رقابت کن.</p><span class="feature-line"></span></article>
+          <article class="feature-card glass-panel tilt-card reveal"><span class="feature-number">05</span><span class="feature-icon">⬡</span><h3>اسپاون امن</h3><p>محدوده‌ی اسپاون برای شروع و تعامل بازیکنان در نظر گرفته شده است.</p><span class="feature-line"></span></article>
+          <article class="feature-card glass-panel tilt-card reveal"><span class="feature-number">06</span><span class="feature-icon">◎</span><h3>تیم مدیریت</h3><p>تیم مدیریت مسئول بررسی گزارش‌ها و حفظ نظم سرور است.</p><span class="feature-line"></span></article>
         </div>
       </div>
     </section>
 
-    <section class="section container" id="ranks">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">ROLES & RECOGNITION</span>
-          <h2>هر رنک، یک <span>جایگاه مشخص</span></h2>
-        </div>
-        <p>رنک‌ها برای نمایش جایگاه و مسئولیت بازیکنان هستند؛ هیچ‌کس با ادعا یا درخواست شخصی صاحب رنک مدیریتی نمی‌شود.</p>
-      </div>
+    <section class="section container ranks-section" id="ranks">
+      <div class="section-intro reveal"><div><span class="section-label">ROLES & RECOGNITION</span><h2>هر رنک، یک<br><span>جایگاه مشخص.</span></h2></div><p>رنک‌ها برای نمایش جایگاه و مسئولیت بازیکنان هستند؛ هیچ‌کس با ادعا یا درخواست شخصی صاحب رنک مدیریتی نمی‌شود.</p></div>
       <div class="rank-grid">
-        <article class="rank-card rank-pro">
-          <div class="rank-top"><span class="rank-symbol">✦</span><span class="rank-label">LEADERBOARD</span></div>
-          <h3>PRO</h3>
-          <p class="rank-subtitle">ویژه‌ی برترین بازیکنان</p>
-          <div class="rank-divider"></div>
-          <p>این رنک فقط به بازیکنانی تعلق می‌گیرد که در لیدربورد رسمی سرور رتبه‌ی <strong>۱، ۲ یا ۳</strong> را به دست بیاورند.</p>
-          <div class="rank-foot"><span class="rank-bullet"></span> سه نفر برتر لیدربورد</div>
-        </article>
-        <article class="rank-card rank-admin">
-          <div class="rank-top"><span class="rank-symbol">⬡</span><span class="rank-label">SERVER STAFF</span></div>
-          <h3>ADMIN</h3>
-          <p class="rank-subtitle">ویژه‌ی تیم مدیریت</p>
-          <div class="rank-divider"></div>
-          <p>این رنک فقط برای افرادی است که رسماً مسئول مدیریت و رسیدگی به امور سرور هستند؛ رنک قابل خرید یا دریافت از طریق رقابت نیست.</p>
-          <div class="rank-foot"><span class="rank-bullet"></span> فقط مدیران سرور</div>
-        </article>
-        <article class="rank-card rank-owner">
-          <div class="rank-top"><span class="rank-symbol">♛</span><span class="rank-label">SERVER CREATOR</span></div>
-          <h3>OWNER</h3>
-          <p class="rank-subtitle">جایگاه سازنده‌ی سرور</p>
-          <div class="rank-divider"></div>
-          <p>رنک اختصاصی سازنده‌ی SHADI SMP است و فقط سازنده‌ی سرور این جایگاه را دارد.</p>
-          <div class="rank-foot"><span class="rank-bullet"></span> فقط سازنده‌ی سرور</div>
-        </article>
+        <article class="rank-card rank-pro tilt-card reveal"><div class="rank-emblem">✦</div><div class="rank-meta">LEADERBOARD · TOP 3</div><h3>PRO</h3><span class="rank-caption">ویژه‌ی برترین بازیکنان</span><div class="rank-rule"></div><p>این رنک فقط به بازیکنانی تعلق می‌گیرد که در لیدربورد رسمی سرور رتبه‌ی <strong>۱، ۲ یا ۳</strong> را به دست بیاورند.</p><div class="rank-foot"><span></span> سه نفر برتر لیدربورد</div></article>
+        <article class="rank-card rank-admin tilt-card reveal"><div class="rank-emblem">⬡</div><div class="rank-meta">OFFICIAL SERVER STAFF</div><h3>ADMIN</h3><span class="rank-caption">ویژه‌ی تیم مدیریت</span><div class="rank-rule"></div><p>این رنک فقط برای افرادی است که رسماً مسئول مدیریت و رسیدگی به امور سرور هستند؛ رنک قابل خرید یا دریافت از طریق رقابت نیست.</p><div class="rank-foot"><span></span> فقط مدیران رسمی سرور</div></article>
+        <article class="rank-card rank-owner tilt-card reveal"><div class="rank-emblem">♛</div><div class="rank-meta">SERVER CREATOR</div><h3>OWNER</h3><span class="rank-caption">جایگاه سازنده‌ی سرور</span><div class="rank-rule"></div><p>رنک اختصاصی سازنده‌ی SHADI SMP است و فقط سازنده‌ی سرور این جایگاه را دارد.</p><div class="rank-foot"><span></span> فقط سازنده‌ی سرور</div></article>
       </div>
-      <p class="rank-note">نکته: PRO جایزه‌ی جایگاه در لیدربورد است؛ ADMIN و OWNER جایگاه‌های مدیریتی و اختصاصی هستند.</p>
+      <p class="rank-note">PRO جایزه‌ی جایگاه در لیدربورد است؛ ADMIN و OWNER جایگاه‌های مدیریتی و اختصاصی هستند.</p>
     </section>
 
     <section class="section rules-section" id="rules">
       <div class="container">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">THE SHADI SMP CODE</span>
-            <h2>قوانین SHADI <span>SMP</span></h2>
+        <div class="section-intro reveal"><div><span class="section-label">THE SHADI SMP CODE</span><h2>قوانین دنیای<br><span>SHADI SMP.</span></h2></div><p>برای رقابت سالم و حفظ تجربه‌ی همه‌ی بازیکنان، قوانین زیر در تمام بخش‌های سرور اجرا می‌شوند.</p></div>
+        <div class="rules-layout">
+          <div class="rules-side glass-panel reveal"><span class="rules-mark">!</span><span class="mini-label">PLAY FAIR. RESPECT OTHERS.</span><h3>بازی خوب،<br>با احترام شروع می‌شه.</h3><p>قبل از شروع ماجراجویی، قوانین را بخوان. رعایت آن‌ها کمک می‌کند سرور برای همه محیطی منصفانه و لذت‌بخش بماند.</p><div class="rules-side-decoration" aria-hidden="true">SHADI</div></div>
+          <div class="rules-list">
+            <article class="rule-item glass-panel reveal"><span>01</span><div><h3>تقلب ممنوع</h3><p>استفاده از هک، چیت، X-Ray، ابزارهای دید غیرمجاز یا هر برنامه‌ای که برتری ناعادلانه ایجاد کند ممنوع است.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>02</span><div><h3>سوءاستفاده از باگ ممنوع</h3><p>استفاده از باگ‌ها، تکثیر غیرمجاز آیتم‌ها، دور زدن سیستم‌ها یا ساخت دستگاه‌های مخرب برای ایجاد لگ ممنوع است. باگ‌ها را به مدیریت گزارش بده.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>03</span><div><h3>احترام به بازیکنان</h3><p>توهین، تهدید، آزار مداوم، تبعیض و ایجاد مزاحمت برای دیگران قابل قبول نیست. اختلاف‌ها را بدون توهین و از راه درست پیگیری کن.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>04</span><div><h3>حریم ساخت‌وساز و آیتم‌ها</h3><p>تخریب عمدی سازه‌ها، دست‌کاری یا برداشتن آیتم‌های دیگران از محدوده‌ها و صندوق‌های متعلق به آن‌ها بدون اجازه ممنوع است.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>05</span><div><h3>قوانین مبارزه و اسپاون</h3><p>در محدوده‌ی امن اسپاون درگیری ممنوع است. هر رویداد یا مبارزه‌ی ویژه باید طبق قوانین اعلام‌شده‌ی همان رویداد انجام شود.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>06</span><div><h3>اقتصاد منصفانه</h3><p>سوءاستفاده از فروشگاه، باگ‌های اقتصادی، تراکنش‌های جعلی و فریب‌کاری در معامله ممنوع است. قبل از تأیید معامله، جزئیات آن را بررسی کن.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>07</span><div><h3>چت و تبلیغات</h3><p>اسپم، فحاشی، تبلیغ سرورهای دیگر و ارسال پیام‌های تکراری یا مزاحم در چت ممنوع است.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>08</span><div><h3>سوءاستفاده از حساب و رنک</h3><p>جعل هویت اعضای مدیریت، سوءاستفاده از دسترسی‌ها و دور زدن محرومیت با حساب دیگر ممنوع است. رنک ADMIN فقط برای مدیران رسمی است.</p></div></article>
+            <article class="rule-item glass-panel reveal"><span>09</span><div><h3>امنیت و اطلاعات شخصی</h3><p>اطلاعات شخصی خودت یا دیگران را در چت منتشر نکن و برای دریافت آیتم یا رنک، رمز عبور یا اطلاعات حساب را در اختیار کسی نگذار.</p></div></article>
           </div>
-          <p>برای رقابت سالم و حفظ تجربه‌ی همه‌ی بازیکنان، قوانین زیر در تمام بخش‌های سرور اجرا می‌شوند.</p>
         </div>
-        <div class="rules-list">
-          <article class="rule-item"><span class="rule-number">01</span><div><h3>تقلب ممنوع</h3><p>استفاده از هک، چیت، X-Ray، ابزارهای دید غیرمجاز یا هر برنامه‌ای که برتری ناعادلانه ایجاد کند ممنوع است.</p></div></article>
-          <article class="rule-item"><span class="rule-number">02</span><div><h3>سوءاستفاده از باگ ممنوع</h3><p>استفاده از باگ‌ها، تکثیر غیرمجاز آیتم‌ها، دور زدن سیستم‌ها یا ساخت دستگاه‌های مخرب برای ایجاد لگ ممنوع است. باگ‌ها را به مدیریت گزارش بده.</p></div></article>
-          <article class="rule-item"><span class="rule-number">03</span><div><h3>احترام به بازیکنان</h3><p>توهین، تهدید، آزار مداوم، تبعیض و ایجاد مزاحمت برای دیگران قابل قبول نیست. اختلاف‌ها را بدون توهین و از راه درست پیگیری کن.</p></div></article>
-          <article class="rule-item"><span class="rule-number">04</span><div><h3>حریم ساخت‌وساز و آیتم‌ها</h3><p>تخریب عمدی سازه‌ها، دست‌کاری یا برداشتن آیتم‌های دیگران از محدوده‌ها و صندوق‌های متعلق به آن‌ها بدون اجازه ممنوع است.</p></div></article>
-          <article class="rule-item"><span class="rule-number">05</span><div><h3>قوانین مبارزه و اسپاون</h3><p>در محدوده‌ی امن اسپاون درگیری ممنوع است. هر رویداد یا مبارزه‌ی ویژه باید طبق قوانین اعلام‌شده‌ی همان رویداد انجام شود.</p></div></article>
-          <article class="rule-item"><span class="rule-number">06</span><div><h3>اقتصاد منصفانه</h3><p>سوءاستفاده از فروشگاه، باگ‌های اقتصادی، تراکنش‌های جعلی و فریب‌کاری در معامله ممنوع است. قبل از تأیید معامله، جزئیات آن را بررسی کن.</p></div></article>
-          <article class="rule-item"><span class="rule-number">07</span><div><h3>چت و تبلیغات</h3><p>اسپم، فحاشی، تبلیغ سرورهای دیگر و ارسال پیام‌های تکراری یا مزاحم در چت ممنوع است.</p></div></article>
-          <article class="rule-item"><span class="rule-number">08</span><div><h3>سوءاستفاده از حساب و رنک</h3><p>جعل هویت اعضای مدیریت، سوءاستفاده از دسترسی‌ها و دور زدن محرومیت با حساب دیگر ممنوع است. رنک ADMIN فقط برای مدیران رسمی است.</p></div></article>
-          <article class="rule-item"><span class="rule-number">09</span><div><h3>امنیت و اطلاعات شخصی</h3><p>اطلاعات شخصی خودت یا دیگران را در چت منتشر نکن و برای دریافت آیتم یا رنک، رمز عبور یا اطلاعات حساب را در اختیار کسی نگذار.</p></div></article>
-        </div>
-        <div class="rules-footer"><span class="rules-footer-icon">!</span><p>مدیریت SHADI SMP با توجه به شدت تخلف و شواهد موجود، درباره‌ی تذکر یا محرومیت تصمیم می‌گیرد. تلاش برای دور زدن قوانین، تخلف جداگانه محسوب می‌شود.</p></div>
+        <div class="rules-footer glass-panel reveal"><span>!</span><p>مدیریت SHADI SMP با توجه به شدت تخلف و شواهد موجود، درباره‌ی تذکر یا محرومیت تصمیم می‌گیرد. تلاش برای دور زدن قوانین، تخلف جداگانه محسوب می‌شود.</p></div>
       </div>
     </section>
 
-    <section class="section container" id="shards">
-      <div class="shard-banner">
-        <div class="shard-copy">
-          <span class="eyebrow">THE SHARD SYSTEM</span>
-          <h2>چالش رو کامل کن.<br><span>شارد به دست بیار.</span></h2>
-          <p>شارد، امتیاز ویژه‌ی SHADI SMP است. در چالش‌های سرور شرکت کن، شارد جمع کن و از فروشگاه شارد برای دریافت آیتم‌ها استفاده کن.</p>
-          <a class="button button-primary" href="#how-to-join">بزن بریم <span>←</span></a>
-        </div>
-        <div class="shard-art" aria-hidden="true">
-          <div class="shard-halo"></div><div class="shard-crystal">◆</div>
-          <span>SHARDS</span><small>SHADI SMP</small>
-        </div>
+    <section class="section container shard-section" id="shards">
+      <div class="shard-banner glass-panel reveal">
+        <div class="shard-copy"><span class="section-label">THE SHARD SYSTEM</span><h2>چالش رو کامل کن؛<br><span>شارد به دست بیار.</span></h2><p>شارد، امتیاز ویژه‌ی SHADI SMP است. در چالش‌های سرور شرکت کن، شارد جمع کن و از فروشگاه شارد برای دریافت آیتم‌ها استفاده کن.</p><a class="button button-primary" href="#how-to-join">شروع کن <span>←</span></a></div>
+        <div class="shard-object" aria-hidden="true"><div class="shard-rings"></div><div class="crystal"><i></i><b></b><em></em></div><span>SHARDS</span><small>SHADI SMP</small></div>
+        <div class="shard-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </section>
 
-    <section class="section container" id="how-to-join">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow">THREE SIMPLE STEPS</span>
-          <h2>چطور وارد <span>سرور بشی؟</span></h2>
-        </div>
-        <p>ورود به SHADI SMP ساده است؛ فقط این سه مرحله را انجام بده.</p>
-      </div>
+    <section class="section container steps-section" id="how-to-join">
+      <div class="section-intro reveal"><div><span class="section-label">THREE SIMPLE STEPS</span><h2>سه قدم تا<br><span>ورود به سرور.</span></h2></div><p>ورود به SHADI SMP ساده است؛ فقط این سه مرحله را انجام بده.</p></div>
       <div class="steps-grid">
-        <article class="step-card"><span>01</span><h3>ماینکرفت را باز کن</h3><p>نسخه‌ی سازگار با سرور را اجرا کن.</p></article>
-        <article class="step-card"><span>02</span><h3>وارد Multiplayer شو</h3><p>گزینه‌ی افزودن سرور جدید را انتخاب کن.</p></article>
-        <article class="step-card"><span>03</span><h3>آدرس را وارد کن</h3><p>IP نمایش‌داده‌شده در همین صفحه را وارد کن و متصل شو.</p></article>
+        <article class="step glass-panel reveal"><span class="step-count">01</span><div class="step-icon">▣</div><h3>ماینکرفت را باز کن</h3><p>نسخه‌ی سازگار با سرور را اجرا کن.</p></article>
+        <article class="step glass-panel reveal"><span class="step-count">02</span><div class="step-icon">⌘</div><h3>وارد Multiplayer شو</h3><p>گزینه‌ی افزودن سرور جدید را انتخاب کن.</p></article>
+        <article class="step glass-panel reveal"><span class="step-count">03</span><div class="step-icon">↗</div><h3>آدرس را وارد کن</h3><p>IP نمایش‌داده‌شده در همین صفحه را وارد کن و متصل شو.</p></article>
       </div>
     </section>
 
-    <section class="final-cta container">
-      <div class="final-cta-glow"></div>
-      <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
-      <h2>اسم خودت رو در <span>SHADI SMP</span> ماندگار کن.</h2>
-      <p>بساز، پیشرفت کن و برای جایگاهت در لیدربورد بجنگ.</p>
-      <a class="button button-primary" href="#join">دریافت آدرس سرور <span>↑</span></a>
+    <section class="container final-cta reveal">
+      <div class="cta-light" aria-hidden="true"></div><span class="section-label">YOUR NEXT CHAPTER STARTS HERE</span><h2>این دنیا جای <span>توئه.</span></h2><p>بساز، پیشرفت کن و برای جایگاهت در SHADI SMP تلاش کن.</p><a class="button button-primary" href="#join">دریافت آدرس سرور <span>↑</span></a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="brand" href="#home"><span class="brand-icon">S</span><span class="brand-name">SHADI<span>SMP</span></span></a>
-      <p>یک دنیا، هزاران ماجرا؛ اینجا SHADI SMP است.</p>
-      <a class="back-top" href="#home">بازگشت به بالا ↑</a>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark"><span>S</span></span><span class="brand-word">SHADI<span>SMP</span></span></a><p>یک دنیا، هزاران ماجرا؛ اینجا SHADI SMP است.</p><a href="#home">بازگشت به بالا ↑</a></div></footer>
   <script src="script.js"></script>
+  <script>
+    const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.12 }) : null;
+    document.querySelectorAll('.reveal').forEach(element => { if (revealObserver) revealObserver.observe(element); else element.classList.add('is-visible'); });
+  </script>
 </body>
 </html>
