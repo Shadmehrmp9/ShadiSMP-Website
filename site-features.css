@@ -1,100 +1,77 @@
-
-/* SHADI SMP account, feedback and management interface */
-:root{--shadi-violet:#b99aff;--shadi-cyan:#8acbff;--shadi-panel:rgba(16,16,39,.94)}
-.header .admin-header-button{cursor:pointer;color:#f7f2ff;border:1px solid #c2a1ff75;background:linear-gradient(120deg,#a17ced38,#5187d62c);box-shadow:0 0 22px #8b65e32a;padding:10px 14px}
-.header .admin-header-button:hover{border-color:#d9c8ff;box-shadow:0 0 28px #8b65e36b}
-.nav .shadi-nav-button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}
-.nav .shadi-nav-button:hover{color:#fff}
-.shadi-feedback-section{padding-top:0!important;margin-bottom:90px}
-.shadi-feedback-card{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:30px;border-radius:22px;position:relative;overflow:hidden}
-.shadi-feedback-card:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:#895be6;filter:blur(95px);opacity:.2;left:-80px;bottom:-120px;pointer-events:none}
-.shadi-feedback-card h2{font-size:clamp(22px,3vw,32px);margin:4px 0}
-.shadi-feedback-card p{color:var(--muted);font-size:12px;max-width:560px;line-height:2.2}
-.shadi-feedback-action{justify-self:end;min-width:190px;cursor:pointer}
-.shadi-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(3,4,15,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.shadi-modal.is-open{display:flex}
-.shadi-modal-card{width:min(100%,510px);max-height:min(88vh,800px);overflow:auto;position:relative;padding:26px;border:1px solid #bca3fa68;border-radius:22px;background:linear-gradient(140deg,rgba(34,27,66,.98),rgba(10,13,32,.98));box-shadow:0 30px 100px #000a,inset 0 1px 0 #fff2}
-.shadi-modal-card.wide{width:min(100%,780px)}
-.shadi-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:18px}
-.shadi-modal-head h2{font-size:22px;margin:0}
-.shadi-modal-head p{font-size:11px;line-height:2;color:#b9b3d0;margin:4px 0 0}
-.shadi-close{width:36px;height:36px;flex-shrink:0;border:1px solid #ffffff29;border-radius:11px;background:#ffffff0b;color:#fff;font-size:22px;cursor:pointer}
-.shadi-form{display:grid;gap:13px}
-.shadi-form label{display:grid;gap:6px;color:#ded8f2;font-size:11px}
-.shadi-form input,.shadi-form textarea,.shadi-form select,.shadi-admin-grid input{width:100%;min-width:0;padding:12px 13px;border:1px solid #9c8bc744;border-radius:11px;background:rgba(4,7,23,.72);color:#fff;font:inherit;font-size:12px;outline:none}
-.shadi-form textarea{min-height:120px;resize:vertical;line-height:2}
-.shadi-form input:focus,.shadi-form textarea:focus,.shadi-form select:focus,.shadi-admin-grid input:focus{border-color:#bda1ff;box-shadow:0 0 0 3px #9c7cff22}
-.shadi-submit{border:1px solid #d2bcff88;background:linear-gradient(110deg,#a17cef,#4c83d5);color:white;border-radius:11px;padding:12px 17px;font:inherit;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 10px 28px #7954cf35}
-.shadi-submit:disabled{opacity:.55;cursor:not-allowed}
-.shadi-tabs{display:flex;gap:7px;padding:5px;margin-bottom:16px;border:1px solid #ffffff17;border-radius:12px;background:#070b20}
-.shadi-tabs button{flex:1;padding:10px 8px;border:0;border-radius:8px;background:transparent;color:#bcb5d2;font:inherit;font-size:12px;cursor:pointer}
-.shadi-tabs button.active{background:linear-gradient(120deg,#a17cef4a,#5489d83b);color:#fff;box-shadow:inset 0 0 0 1px #c6adff4b}
-.shadi-hidden{display:none!important}
-.shadi-status{min-height:25px;margin:12px 0 0;padding:9px 11px;border-radius:10px;background:#ffffff09;color:#c8c0dc;font-size:11px;line-height:1.9}
-.shadi-status.error{color:#ffb4c0;background:#a21c3b20}
-.shadi-status.success{color:#a9f1d4;background:#157b5b21}
-.shadi-hint{font-size:10px;color:#9d97b6;line-height:1.9;margin:10px 0 0}
-.shadi-logout{margin-top:12px;border:1px solid #ffffff2c;background:#ffffff0a;color:#f2ecff;padding:9px 14px;border-radius:10px;font:inherit;font-size:11px;cursor:pointer}
-.shadi-admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.shadi-admin-grid label{display:grid;gap:6px;font-size:11px;color:#ded8f2}
-.shadi-admin-grid .full{grid-column:1/-1}
-.shadi-feedback-list{display:grid;gap:9px;margin-top:14px}
-.shadi-feedback-item{padding:12px;border:1px solid #ffffff19;border-radius:12px;background:#ffffff08}
-.shadi-feedback-item strong{font-size:11px;color:#d4c1ff}
-.shadi-feedback-item p{font-size:11px;color:#d7d1e5;line-height:2;margin:6px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.shadi-feedback-item small{color:#928aa8;font-size:9px}
-.shadi-admin-stats{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
-.shadi-stat{padding:10px 14px;border-radius:10px;background:#ffffff09;border:1px solid #ffffff17;font-size:11px;color:#d6d0e7}
-.shadi-stat b{color:#c9b0ff;font-size:17px;margin-inline-start:6px}
-.shadi-announcement{margin:12px auto 0;padding:10px 16px;border-radius:12px;text-align:center;color:#fff2cf;background:linear-gradient(90deg,#6b4b9d55,#2a518a55);border:1px solid #d1b8ff38;font-size:11px;max-width:1180px}
-.world-photo{background:linear-gradient(140deg,#1c1741,#122b4c 55%,#080d20)}
-.world-photo img{object-fit:cover}
-.hero-image{background:linear-gradient(130deg,#16113b,#182d57 60%,#090c20)}
-.shadi-modal-open{overflow:hidden}
-@media(max-width:760px){
- .header .admin-header-button{padding:8px 10px;font-size:10px}
- .header{gap:8px}
- .shadi-feedback-card{grid-template-columns:1fr;padding:22px}
- .shadi-feedback-action{justify-self:stretch;width:100%}
- .shadi-modal{padding:10px}
- .shadi-modal-card{padding:19px;border-radius:17px;max-height:92vh}
- .shadi-admin-grid{grid-template-columns:1fr}
- .shadi-admin-grid .full{grid-column:auto}
- .world-showcase{height:470px}
- .world-glass-card{left:13px;right:13px;bottom:14px;width:auto;max-width:430px;padding:16px}
- .photo-label{right:18px;top:18px;bottom:auto;max-width:78%}
+/* SHADI SMP: Feedback-only interface. */
+:root { --shadi-violet: #b99aff; --shadi-cyan: #8acbff; --shadi-panel: rgba(16,16,39,.94); }
+.shadi-feedback-section { padding-top: 0 !important; margin-bottom: 90px; }
+.shadi-feedback-card {
+  display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr);
+  gap: 24px; align-items: center; padding: 30px; border-radius: 22px;
+  position: relative; overflow: hidden;
 }
-@media(max-width:520px){
- .header .header-button:not(.admin-header-button){display:none}
- .header .admin-header-button{padding:7px 8px;font-size:9px}
- .brand-word{font-size:12px}
- .brand-mark{width:36px;height:36px}
- .shadi-feedback-section{margin-bottom:55px}
- .shadi-feedback-card h2{font-size:22px}
- .shadi-feedback-card p{font-size:10px}
+.shadi-feedback-card:after {
+  content: ""; position: absolute; width: 250px; height: 250px; border-radius: 50%;
+  background: #895be6; filter: blur(95px); opacity: .2; left: -80px; bottom: -120px; pointer-events: none;
 }
-@media(prefers-reduced-motion:reduce){.shadi-modal,.shadi-submit,.shadi-close{transition:none!important}}
-
-
-/* Responsive navigation and accessible browser history controls. */
-.shard-banner{background-image:linear-gradient(110deg,rgba(30,23,58,.91),rgba(15,22,47,.82)),url('./assets/shadi-world.svg');background-position:center;background-size:cover}
-.shadi-history-dock{position:fixed;z-index:80;right:18px;bottom:18px;display:flex;align-items:center;gap:7px;padding:7px;border:1px solid #c4adff55;border-radius:15px;background:rgba(12,13,31,.82);box-shadow:0 12px 36px #0007,inset 0 1px 0 #fff2;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.shadi-history-dock button{display:grid;place-items:center;width:40px;height:40px;border:1px solid #bba2ff45;border-radius:10px;background:linear-gradient(135deg,#a17ced2b,#5187d624);color:#f7f2ff;font:700 22px/1 Tahoma,sans-serif;cursor:pointer;touch-action:manipulation;transition:background .2s,transform .2s}
-.shadi-history-dock button:hover{background:linear-gradient(135deg,#a17ced66,#5187d655);transform:translateY(-2px)}
-.shadi-history-dock button:focus-visible{outline:2px solid #c8b0ff;outline-offset:3px}
-#shadiScrollTop{opacity:0;visibility:hidden;transform:translateY(7px);pointer-events:none;transition:opacity .2s,visibility .2s,transform .2s}
-#shadiScrollTop.is-visible{opacity:1;visibility:visible;transform:none;pointer-events:auto}
-@media(max-width:760px){
- .header .admin-header-button{display:flex;align-items:center;justify-content:center;padding:8px 10px;font-size:10px}
- .shadi-modal-card{max-height:92vh;max-height:min(92dvh,800px)}
- .shadi-history-dock{right:12px;bottom:max(12px,env(safe-area-inset-bottom));gap:5px;padding:6px}
- .shadi-history-dock button{width:38px;height:38px}
- .shadi-modal{padding:10px}
+.shadi-feedback-card > div, .shadi-feedback-card > button { position: relative; z-index: 1; min-width: 0; }
+.shadi-feedback-card h2 { font-size: clamp(22px,3vw,32px); margin: 4px 0; }
+.shadi-feedback-card p { color: var(--muted); font-size: 12px; max-width: 560px; line-height: 2.2; }
+.shadi-feedback-action { justify-self: end; min-width: 190px; cursor: pointer; }
+.shadi-modal {
+  position: fixed; inset: 0; z-index: 1000; display: none;
+  align-items: center; justify-content: center; box-sizing: border-box;
+  padding: 18px; background: rgba(3,4,15,.82);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
 }
-@media(max-width:360px){
- .header .admin-header-button{padding:6px 7px;font-size:9px}
- .shadi-history-dock button{width:35px;height:35px}
+.shadi-modal.is-open { display: flex; }
+.shadi-modal-card {
+  box-sizing: border-box; width: min(100%,560px); max-width: 560px;
+  max-height: min(88vh,800px); overflow: auto; position: relative;
+  padding: 26px; border: 1px solid #bca3fa68; border-radius: 22px;
+  background: linear-gradient(140deg,rgba(34,27,66,.98),rgba(10,13,32,.98));
+  box-shadow: 0 30px 100px #000a,inset 0 1px 0 #fff2;
 }
-@media(prefers-reduced-motion:reduce){
- .shadi-history-dock button{transition:none}
+.shadi-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; margin-bottom: 18px; }
+.shadi-modal-head > div { flex: 1 1 auto; min-width: 0; }
+.shadi-modal-head h2 { font-size: 22px; margin: 0; }
+.shadi-modal-head p { font-size: 11px; line-height: 2; color: #b9b3d0; margin: 4px 0 0; }
+.shadi-close {
+  flex: 0 0 40px; width: 40px; height: 40px; min-width: 40px;
+  border: 1px solid #ffffff29; border-radius: 11px; background: #ffffff0b;
+  color: #fff; font-size: 22px; cursor: pointer;
 }
+.shadi-feedback-form { display: grid; gap: 13px; min-width: 0; }
+.shadi-feedback-form label { display: grid; gap: 6px; min-width: 0; color: #ded8f2; font-size: 11px; }
+.shadi-feedback-form input, .shadi-feedback-form textarea, .shadi-feedback-form select {
+  box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0;
+  padding: 12px 13px; border: 1px solid #9c8bc744; border-radius: 11px;
+  background: rgba(4,7,23,.72); color: #fff; font: inherit; font-size: 12px; outline: none;
+}
+.shadi-feedback-form textarea { min-height: 120px; resize: vertical; line-height: 2; }
+.shadi-feedback-form input:focus, .shadi-feedback-form textarea:focus, .shadi-feedback-form select:focus {
+  border-color: #bda1ff; box-shadow: 0 0 0 3px #9c7cff22;
+}
+.shadi-submit {
+  width: 100%; min-height: 48px; border: 1px solid #d2bcff88;
+  background: linear-gradient(110deg,#a17cef,#4c83d5); color: white;
+  border-radius: 11px; padding: 12px 17px; font: inherit; font-size: 12px;
+  font-weight: 800; cursor: pointer; box-shadow: 0 10px 28px #7954cf35;
+}
+.shadi-submit:disabled { opacity: .55; cursor: not-allowed; }
+.shadi-status { min-height: 25px; margin: 12px 0 0; padding: 9px 11px; border-radius: 10px; background: #ffffff09; color: #c8c0dc; font-size: 11px; line-height: 1.9; overflow-wrap: anywhere; }
+.shadi-status.error { color: #ffb4c0; background: #a21c3b20; }
+.shadi-status.success { color: #a9f1d4; background: #157b5b21; }
+.shadi-announcement {
+  margin: 12px auto 0; padding: 10px 16px; border-radius: 12px; text-align: center;
+  color: #fff2cf; background: linear-gradient(90deg,#6b4b9d55,#2a518a55);
+  border: 1px solid #d1b8ff38; font-size: 11px; max-width: 1180px;
+}
+.world-photo { background: linear-gradient(140deg,#1c1741,#122b4c 55%,#080d20); }
+.world-photo img { object-fit: cover; }
+.hero-image { background: linear-gradient(130deg,#16113b,#182d57 60%,#090c20); }
+.shadi-modal-open { overflow: hidden; }
+@media (max-width: 760px) {
+  .shadi-feedback-card { grid-template-columns: minmax(0,1fr); padding: 22px; }
+  .shadi-feedback-action { justify-self: stretch; width: 100%; min-width: 0; }
+  .shadi-feedback-section { margin-bottom: 55px; }
+  .shadi-feedback-card h2 { font-size: 22px; }
+  .shadi-feedback-card p { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .shadi-modal, .shadi-submit, .shadi-close { transition: none !important; } }
